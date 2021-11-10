@@ -1,0 +1,14 @@
+.env
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Dotnet files
+**/Debug/**
+**/project-cache/**
+**/.vs/**
+**/obj/**
+
+# Node files
+node_modules/
+

@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "jquery": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended",
+  "globals": {
+    "ss": "readonly",
+    "mapboxgl": "readonly",
+    "turf": "readonly",
+    "moment": "readonly",
+    "Chart": "readonly",
+    "ChartDataLabels": "readonly",
+    "workbox": "readonly",
+    "Reveal": "readonly",
+    "ClientJS": "readonly",
+    "uuidv5": "readonly",
+    "importScripts": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "rules": {}
+}

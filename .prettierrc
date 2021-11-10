@@ -1,0 +1,15 @@
+{
+  "trailingComma": "es5",
+  "semi": true,
+  "singleQuote": true,
+  "printWidth": 150,
+  "htmlWhitespaceSensitivity": "ignore",
+  "overrides": [
+    {
+      "files": ["*.html"],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}

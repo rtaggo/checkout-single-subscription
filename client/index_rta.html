@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Stripe Checkout Sample</title>
+    <meta name="description" content="A demo of Stripe Payment Intents" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/slds/assets/styles/salesforce-lightning-design-system.min.css" />
+
+    <!-- Load Stripe.js on your website. -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./index_rta.js" defer></script>
+
+    <style>
+      html,
+      body {
+        background-color: white;
+      }
+      .price-table-container {
+        box-shadow: unset;
+      }
+      .togethere-background {
+        height: 3rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="togethere-background"></div>
+    <div class="sr-root">
+      <div class="sr-main">
+        <h1>Easypoint subscription plans</h1>
+
+        <div class="price-table-container">
+          <div id="plan-list"></div>
+        </div>
+        <div id="actions-buttons" class="slds-grid slds-m-top_small">
+          <button class="slds-button slds-button_neutral" disabled="" data-action="cancel">Annuler</button>
+          <button class="slds-button slds-button_brand" disabled="" data-action="validate">Valider</button>
+        </div>
+      </div>
+    </div>
+    <div id="error-message" class="error-message"></div>
+  </body>
+</html>
