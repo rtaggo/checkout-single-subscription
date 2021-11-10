@@ -122,10 +122,21 @@ app.get('/subscriptions', async (req, res) => {
   const subscriptions = await stripe.subscriptions.list({
     customer: customerId,
     status: 'all',
-    expand: ['data.default_payment_method'],
+    expand: ['data.default_payment_method', 'data.plan'],
   });
 
   res.json({ subscriptions });
+});
+
+app.post('/cancel-subscription', async (req, res) => {
+  // Cancel the subscription
+  try {
+    const deletedSubscription = await stripe.subscriptions.del(req.body.subscriptionId);
+
+    res.send({ subscription: deletedSubscription });
+  } catch (error) {
+    return res.status(400).send({ error: { message: error.message } });
+  }
 });
 
 app.post('/customer-portal', async (req, res) => {

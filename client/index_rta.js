@@ -83,16 +83,21 @@ const fetch_config = () => {
 };
 
 let subscriptions_data = [];
-let current_subscription = 'freemium_plan';
+let current_subscription = {
+  plan: {
+    id: 'freemium_plan',
+  },
+};
 const fetch_user_subscriptions = async () => {
   const { subscriptions } = await fetch('/subscriptions').then((r) => r.json());
   subscriptions_data = subscriptions.data.filter((s) => s.status === 'active');
   if (subscriptions_data.length === 0) {
     $('#freemium_plan').attr('checked', true);
+    return;
   }
   const sub = subscriptions_data[0];
   $(`#${sub.plan.id}`).attr('checked', true);
-  current_subscription = sub.plan.id;
+  current_subscription = sub;
 
   debugger;
 };
@@ -110,8 +115,20 @@ const setuplisteners = () => {
     .attr('disabled', false);
 };
 
-const check_subscription_changed = (priceId) => {
-  if (priceId !== current_subscription) {
+const check_subscription_changed = async (priceId) => {
+  if (priceId !== current_subscription.plan.id) {
+    if (current_subscription.plan.id !== 'freemium_plan') {
+      const { subscription } = await fetch('/cancel-subscription', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          subscriptionId: current_subscription.id,
+        }),
+      }).then((response) => response.json());
+      debugger;
+    }
     if (priceId === 'freemium_plan') {
       debugger;
       /**
